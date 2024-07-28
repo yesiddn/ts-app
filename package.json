@@ -1,0 +1,22 @@
+{
+  "name": "ts-app",
+  "version": "1.0.0",
+  "description": "TypeScript: Tipos avanzados y funciones",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yesiddn/ts-app.git"
+  },
+  "author": "Duvan Yesid <yesidrodriguez305@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yesiddn/ts-app/issues"
+  },
+  "homepage": "https://github.com/yesiddn/ts-app#readme",
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}
