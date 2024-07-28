@@ -93,3 +93,37 @@ const takePicture = async () => {
 Observamos que `CameraResultType` es un `enum` que restringe al atributo `resultType` a tener un valor dentro de las opciones del `enum`. En este caso, dicho atributo recibe el valor de la llave `Uri` del `enum`.
 
 En conclusión, un `enum` nos ayuda a no equivocarnos cuando asignemos valores a una variable reduciendo las posibilidades de asignación a una lista de opciones predefinidas.
+
+## Tuples
+
+Las tuplas o tuples nos permiten crear un array fuertemente tipado especificando el tipo de dato de cada elemento, así como una cantidad definida de elementos que podrá almacenar.
+
+Las tuplas no vienen en el conjunto de tipos de datos por defecto de JavaScript.
+
+Las definimos indicando entre `[]` el tipo de dato que cada elemento tendrá en la tupla.
+
+```typescript
+const user: [string, number] = ['nicobytes', 15];
+```
+
+Al definir el tipado de cada uno también estamos definiendo la cantidad de valores que tendrá la tupla, por tanto, no podemos agregar más elementos.
+
+```typescript
+let user: [string, number];
+
+user = ['nico']; // Error: la tupla debe almacenar 2 valores (un `string` y un `number`)
+user = ['nico', true]; // Error: el segundo elemento de la tupla debe ser del tipo `number`
+user = ['nico', 20]; // Correcto: el primer elemento es del tipo `string` y el segundo de tipo `number`
+```
+
+### Desestructuración
+
+Podemos aplicar desestructuración para asignar a ciertas variables respectivamente los valores dentro de una tupla.
+
+```typescript
+const user: [string, number] = ['nicobytes', 15];
+const [username, age] = user;
+console.log(username); // nicobytes
+```
+
+> 💡 Nota: Este tipo de desestructuración también lo podemos ver en el hook `useState` de la librería React.
