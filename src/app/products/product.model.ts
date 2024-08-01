@@ -1,10 +1,9 @@
+import { BaseModel } from '../base.model';
 import { Category } from '../categories/category.model';
 
 export type Sizes = 'small' | 'medium' | 'large';
-export interface Product {
-  id: string;
+export interface Product extends BaseModel {
   title: string;
-  createdAt: Date;
   stock: number;
   sizes?: Sizes;
   // es recomendable usar otro modelo para las estructura anidadas
