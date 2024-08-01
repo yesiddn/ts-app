@@ -189,3 +189,61 @@ console.log(example([1,1,1,1])) // 'Es un array'
 console.log(example(1212)) // error: Uncaught Error: Not Match
 console.log(example('Hola después del fail')) // NUNCA SE EJECUTA, porque se lanzó un error previamente
 ```
+
+## Utility types
+
+Los tipos `Omit` y `Pick` en TypeScript son **utility types** que te permiten crear un nuevo tipo basado en un tipo existente, pero omitiendo o seleccionando algunas de las propiedades del tipo original.
+
+### Omit en TypeScript
+
+Utilizamos la siguiente expresión para definir un `Omit: Omit<T, K>`. Con esto generamos un nuevo tipo que tiene todas las propiedades de `T` excepto las especificadas en `K`. Veamos ejemplo en código:
+
+```typescript
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  phoneNumber: string;
+}
+
+// Usando `Omit` para omitir ciertas propiedades de la interfaz User
+type UserWithoutContact = Omit<User, 'email' | 'phoneNumber'>; // 👈 Nuevo tipo
+
+// `UserWithoutContact` es ahora un tipo con las propiedades `id` y `name`, pero sin `email` ni `phoneNumber`.
+
+let user: UserWithoutContact = {
+  id: 1,
+  name: 'Carlos Araujo',
+};
+
+console.log(user); // { id: 1, name: 'Carlos Araujo' }
+```
+
+En este caso, hemos usado `Omit` para excluir las propiedades `email` y `phoneNumber` de la interfaz `User`. Por lo tanto, el nuevo tipo `UserWithoutContact` solo tiene las propiedades `id` y `name`.
+
+### Pick en TypeScript
+
+Empleamos la siguiente expresión para definir un `Pick: Pick<T, K>`. Con esto producimos un nuevo tipo que solo tiene las propiedades de `T` que se especifican en `K`. Veamos ejemplo en código:
+
+```typescript
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  phoneNumber: string;
+}
+
+// Usando `Pick` para seleccionar ciertas propiedades de User
+type UserContactInfo = Pick<User, 'email' | 'phoneNumber'>;
+
+// `UserContactInfo` es ahora un tipo con solo las propiedades `email` y `phoneNumber`
+
+let contactInfo: UserContactInfo = {
+  email: "user@email.com",
+  phoneNumber: "653-951-802"
+};
+
+console.log(contactInfo); // { email: "user@email.com", phoneNumber: "653-951-802" }
+```
+
+En este caso, hemos empleado `Pick` para seleccionar las propiedades `email` y `phoneNumber` de la interfaz `User`. Por lo tanto, el nuevo tipo `UserContactInfo` solo tiene los atributos `email` y `phoneNumber`.
