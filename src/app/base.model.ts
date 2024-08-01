@@ -1,5 +1,5 @@
 export interface BaseModel {
-  id: string;
-  createdAt: Date;
-  updatedAt: Date;
+  readonly id: string; // de esta forma solo se podra leer y en caso de modificar la propiedad, saltará una alerta
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
 }
