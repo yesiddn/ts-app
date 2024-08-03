@@ -360,3 +360,26 @@ function createHuman(name: Human["name"]) {
 ```
 
 En este caso, el parámetro `id` en la función `createHuman` sería un `string`. La ventaja de esto es que si nosotros cambiáramos el tipo de dato de `id` a `number` en la interfaz `Human`, automáticamente el tipo de dato del parámetro name de la función `createHuman` sería number también, pues, el tipado se sincronizaría.
+
+### Cómo usar ReadonlyArray en TypeScript
+
+En `TypeScript`, `ReadonlyArray` es un tipo que representa una **versión de solo lectura de un array**. Esto quiere decir que una vez creado un `ReadonlyArray`, no puedes cambiar sus elementos o su longitud.
+
+La sintaxis para crear un ReadonlyArray en TypeScript es la siguiente:
+
+```typescript
+let nombreArray: ReadonlyArray<tipo> = [...];
+Donde tipo es el tipado de los elementos del array.
+
+Veamos cómo puedes utilizarlo con un ejemplo:
+
+let numbers: ReadonlyArray<number> = [30, 76, 21, 85, 42];
+
+console.log(numbers[3]); // ✅SÍ está permitido, imprime el valor 85
+console.log(numbers.length); // ✅SÍ está permitido, imprime 5 que es la longitud del array
+
+//numbers[0] = 10; // ⛔NO permitido porque se intenta modificar un valor en el array
+//numbers.push(6); // ⛔NO permitido porque se intenta agregar un nuevo elemento en el array y con ello aumentar su longitud
+```
+
+El variable `numbers` es un `array` de números de solo lectura. Puedes leer los elementos del `array` y puedes consultar su longitud, pero no puedes modificar los elementos ni cambiar la longitud de este. Si intentas hacerlo, TypeScript lanzará un error en tiempo de compilación.

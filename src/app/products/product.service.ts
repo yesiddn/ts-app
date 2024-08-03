@@ -36,5 +36,7 @@ export const updateProduct = (id: Product['id'], changes: UpdateProductDto): Pro
 }
 
 export const findProducts = (dto: FindProductDto): Product[] => {
+  // dto.tags = []; // readonly impide que asignemos un nuevo valor, pero ...
+  // dto.tags?.pop(); // readonly no impide que podamos mutar el array original
   return products;
 }
