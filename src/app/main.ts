@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import { addProduct, products } from "./products/product.service";
+import { addProduct, products, updateProduct } from "./products/product.service";
 
 for (let i = 0; i < 10; i++) {
   const product = addProduct({
@@ -20,3 +20,12 @@ for (let i = 0; i < 10; i++) {
 
   console.log(product);
 }
+
+const product = products[0];
+updateProduct(product.id, {
+  title: faker.commerce.productName(),
+  stock: faker.number.int({
+      min: 10,
+      max: 100
+    }),
+});
