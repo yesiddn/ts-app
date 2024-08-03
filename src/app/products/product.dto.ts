@@ -12,3 +12,5 @@ export interface UpdateProductDto extends Partial<CreateProductDto> { } // de es
 
 // required es el contrario de partial, por lo que regresa un nuevo tipo pero con todos los atributos obligatorios
 type example2 = Required<CreateProductDto>
+
+export interface FindProductDto extends Readonly<Partial<Product>> { } // asi se pueden unir tos utility types para que solo se puedan leer los atributos y además sean oppcionales

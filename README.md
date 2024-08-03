@@ -196,6 +196,8 @@ Los tipos `Omit` y `Pick` en TypeScript son **utility types** que te permiten cr
 
 Los tipos `Partial` y `Required` en TypeScript son utility types que te permiten crear un nuevo tipo basado en un tipo existente, pero haciendo que todas las propiedades de ese tipo sean **opcionales** u **obligatorias**.
 
+El tipo `Readonly` en TypeScript es un utility type que te permite crear un nuevo tipo basado en un otro existente, pero haciendo que todas las propiedades de ese tipo sean de `solo lectura.`
+
 ### Omit en TypeScript
 
 Utilizamos la siguiente expresión para definir un `Omit: Omit<T, K>`. Con esto generamos un nuevo tipo que tiene todas las propiedades de `T` excepto las especificadas en `K`. Veamos ejemplo en código:
@@ -280,7 +282,7 @@ Hemos usado Partial para hacer que todas las propiedades de `User` sean opcional
 
 ### Required type en TypeScript
 
-Empleamos la siguiente expresión para definir un Required `type: Required<T>`. Esto genera un nuevo tipo que tiene todas las propiedades de `T`, pero cada atributo es obligatoria. Veamos un ejemplo:
+Empleamos la siguiente expresión para definir un Required type: `Required<T>`. Esto genera un nuevo tipo que tiene todas las propiedades de `T`, pero cada atributo es obligatoria. Veamos un ejemplo:
 
 ```typescript
 interface User {
@@ -307,3 +309,33 @@ console.log(requiredUser); // { id: 1, name: 'Fatima Fernández', email: 'fatima
 ```
 
 Hemos empleado `Required` para hacer que todas las propiedades de `User` sean obligatorias. Por lo tanto, el nuevo tipo `RequiredUser` tiene las propiedades `id`, `name`, `email` y `phoneNumber`, pero todas ellas son obligatorias.
+
+### Readonly type en TypeScript
+
+Utilizamos la siguiente expresión para definir un Readonly type: `Readonly<T>`. Esto genera un nuevo tipo que tiene todas las propiedades de `T`, pero cada propiedad es de solo lectura, lo que significa que una vez que se asigna un valor a la propiedad, no puede ser cambiado. Veamos un ejemplo:
+
+```typescript
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+// Usando `Readonly` para hacer todas las propiedades de User de solo lectura
+type ReadonlyUser = Readonly<User>;
+
+// `ReadonlyUser` es ahora un tipo con todas las propiedades de `User`, pero cada una de ellas es de solo lectura.
+
+let readonlyUser: ReadonlyUser = {
+  id: 1,
+  name: 'Rosa López',
+  email: 'rosa@email.com'
+};
+
+console.log(readonlyUser); // { id: 1, name: 'Rosa López', email: 'rosa@email.com' }
+
+// Tratar de cambiar una propiedad lanzaría un error
+// readonlyUser.name = 'Jennifer Rodríguez'; // ⛔Error
+```
+
+Hemos usado `Readonly` para hacer que todas las propiedades de `User` sean de solo lectura. Por lo tanto, el nuevo tipo `ReadonlyUser` tiene las propiedades `id`, `name` y `email`, pero todas ellas son de solo lectura y no pueden ser cambiadas después de la asignación inicial.
